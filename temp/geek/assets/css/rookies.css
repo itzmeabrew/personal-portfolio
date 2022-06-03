@@ -1,0 +1,8 @@
+@font-face {
+    font-family: 'rookies-showtimesregular';
+    src: url('../fonts/rookies_showtimes-webfont.woff2') format('woff2'),
+         url('../fonts/rookies_showtimes-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+} 
