@@ -1,3 +1,3 @@
 # personal-portfolio
 
-This is a personal project for mt portfolio website.
+This is a personal project for my portfolio website.
