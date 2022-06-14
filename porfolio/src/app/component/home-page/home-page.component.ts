@@ -13,7 +13,7 @@ export class HomePageComponent implements OnInit
 
   private selector(el: string , all = false)
   {
-    el = el.trim()
+    el = el.trim();
     if (all) 
     {
       return Array.from(document.querySelectorAll(el));
@@ -93,7 +93,6 @@ export class HomePageComponent implements OnInit
             item.classList.remove('section-show');
           });
           slc.classList.add('section-show');
-
         }, 350);
       } 
       else 
@@ -103,7 +102,6 @@ export class HomePageComponent implements OnInit
         })
         slc.classList.add('section-show');
       }
-
       this.scrollTo(hasx);
     }
 
