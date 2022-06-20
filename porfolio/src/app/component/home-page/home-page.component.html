@@ -72,7 +72,7 @@
 
   </div>
 
-  <div class="counts container">
+  <!-- <div class="counts container">
 
     <div class="row centerx">
 
@@ -102,7 +102,7 @@
 
     </div>
 
-  </div>
+  </div> -->
 
   <div class="skills container">
 
@@ -355,13 +355,12 @@
           <p><em>Saintgits College of Engineering</em></p>
           <p>Completed under graduate degree (4 year) from Saintgits College of Engineering under KTU</p>
         </div>
-        <!-- <div class="resume-item">
-          <h4>Bachelor of Fine Arts &amp; Graphic Design</h4>
-          <h5>2010 - 2014</h5>
-          <p><em>Rochester Institute of Technology, Rochester, NY</em></p>
-          <p>Quia nobis sequi est occaecati aut. Repudiandae et iusto quae reiciendis et quis Eius vel ratione eius unde vitae rerum voluptates asperiores voluptatem Earum
-            molestiae consequatur neque etlon sader mart dila</p>
-        </div> -->
+        <div class="resume-item">
+          <h4>HIGH SCHOOL & HIGHER SECONDARY</h4>
+          <h5>2013 - 2016</h5>
+          <p><em>St.Thomas HSS</em></p>
+          <p>Completed High School & Higher Secondary with agregate 80% under DHSE,State</p>
+        </div>
       </div>
       <div class="col-lg-6">
         <h3 class="resume-title">Professional Experience</h3>
@@ -410,7 +409,7 @@
         <div class="icon-box">
           <div class="icon"><i class="fa-brands fa-internet-explorer"></i></div>
           <h4><a href="">Web Development and Design</a></h4>
-          <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
+          <p>Design and develop fully responsive dynamic web applications.</p>
         </div>
       </div>
 
@@ -418,7 +417,7 @@
         <div class="icon-box">
           <div class="icon"><i class="fa-solid fa-marker"></i></div>
           <h4><a href="">Graphics Design</a></h4>
-          <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</p>
+          <p>Design stunning posters logos and other graphic elements using Adobe Creative Cloud.</p>
         </div>
       </div>
 
@@ -426,7 +425,7 @@
         <div class="icon-box">
           <div class="icon"><i class="fa-solid fa-mobile"></i></div>
           <h4><a href="">Mobile Application Development</a></h4>
-          <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia</p>
+          <p>Develop cross-platform applications or native applications for Android and iOS.</p>
         </div>
       </div>
 
@@ -434,7 +433,7 @@
         <div class="icon-box">
           <div class="icon"><i class="fa-brands fa-figma"></i></div>
           <h4><a href="">UI/UX Design</a></h4>
-          <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis</p>
+          <p>Design UI/UX for applications for protyping and maximize user experience and usability.</p>
         </div>
       </div>
 
@@ -442,7 +441,7 @@
         <div class="icon-box">
           <div class="icon"><i class="fa-solid fa-video"></i></div>
           <h4><a href="">Video Editing and Compositing</a></h4>
-          <p>Quis consequatur saepe eligendi voluptatem consequatur dolor consequuntur</p>
+          <p>Edit and composit video using Adobe Premier Pro and After Effects.</p>
         </div>
       </div>
 
@@ -450,7 +449,7 @@
         <div class="icon-box">
           <div class="icon"><i class="fa-brands fa-unity"></i></div>
           <h4><a href="">Blender 3D Modeling</a></h4>
-          <p>Modi nostrum vel laborum. Porro fugit error sit minus sapiente sit aspernatur</p>
+          <p>Design and Render 3D Models and CGIs using Blender</p>
         </div>
       </div>
 
@@ -473,7 +472,7 @@
         <div class="info-box">
           <i class="fa-solid fa-map"></i>
           <h3>My Address</h3>
-          <p>Payyampallil H Thirumoolapuram PO Thiruvalla 689115</p>
+          <p>Payyampallil House,<br>Thirumoolapuram PO,Thiruvalla<br>Pin:- 689115</p>
         </div>
       </div>
 
@@ -506,7 +505,7 @@
       </div>
     </div>
 
-    <form action="forms/contact.php" method="post" role="form" class="php-email-form mt-4">
+    <form [formGroup]="contact_form" role="form" class="php-email-form mt-4">
       <div class="row">
         <div class="col-md-6 form-group">
           <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-home-page',
@@ -7,6 +8,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomePageComponent implements OnInit
 {
+  contact_form: FormGroup = new FormGroup({
+    name: new FormControl(null,
+      [
+        Validators.required,
+        Validators.maxLength(45)
+      ]),
+      email: new FormControl(null,
+      [
+        Validators.required,
+        Validators.email,
+        Validators.maxLength(45)
+      ]),
+      subject: new FormControl(null,
+      [
+        Validators.required,
+        Validators.maxLength(45),
+      ]),
+      body: new FormControl(null,
+      [
+        Validators.required,
+        Validators.maxLength(200),
+      ])
+    });
+
   constructor() { }
 
   ngOnInit(): void { }
