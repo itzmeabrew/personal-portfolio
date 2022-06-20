@@ -36,6 +36,25 @@ export class HomePageComponent implements OnInit
 
   ngOnInit(): void { }
 
+
+public contactMe(): void
+{
+  console.log(this.contact_form.value);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+  //////////////////////////////////////////////UI Toolkit/////////////////////////////////////
+
   private selector(el: string , all = false)
   {
     el = el.trim();
