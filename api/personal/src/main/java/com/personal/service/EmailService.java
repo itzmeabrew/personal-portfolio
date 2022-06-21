@@ -19,7 +19,7 @@ public class EmailService implements EmailServiceInterface
         message.setFrom("abrewabraham@yahoo.com");
         message.setTo(to);
         message.setSubject(subject);
-        message.setText("<b>"+text+"</b>");
+        message.setText(text);
         emailSender.send(message);
     }
 }

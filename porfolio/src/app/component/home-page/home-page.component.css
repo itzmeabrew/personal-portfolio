@@ -3,3 +3,22 @@
     display: flex;
     justify-content: center;
 }
+
+.btnResponsive
+{
+
+}
+
+@media (max-width: 991px) 
+{
+    .btnResponsive
+    {
+        display: none;
+    }
+}
+
+.text-justify
+{
+    text-align: justify;
+    text-justify: inter-word;
+}

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
+import { HomeService } from '../../service/home.service';
 
 @Component({
   selector: 'app-home-page',
@@ -8,52 +10,81 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class HomePageComponent implements OnInit
 {
-  contact_form: FormGroup = new FormGroup({
+  contact_form: FormGroup = new FormGroup(
+  {
     name: new FormControl(null,
-      [
-        Validators.required,
-        Validators.maxLength(45)
-      ]),
-      email: new FormControl(null,
+    [
+      Validators.required,
+      Validators.maxLength(45)
+    ]),
+    email: new FormControl(null,
       [
         Validators.required,
         Validators.email,
         Validators.maxLength(45)
       ]),
-      subject: new FormControl(null,
+    subject: new FormControl(null,
       [
         Validators.required,
         Validators.maxLength(45),
       ]),
-      body: new FormControl(null,
-      [
-        Validators.required,
-        Validators.maxLength(200),
-      ])
-    });
-
-  constructor() { }
+    body: new FormControl(null,
+    [
+      Validators.required,
+      Validators.maxLength(200),
+    ])
+  });
+    
+  constructor(private msx: HomeService,private toastr: ToastrService) { }
 
   ngOnInit(): void { }
+  
+  public contactMe(): void
+  {
+
+    if(this.contact_form.valid)
+    {
+      console.log(this.contact_form.value);
+      const formData = this.contact_form.value;
+      const mailReq = { mailid:"abrewabraham@gmail.com",subject:formData.subject,body:formData.email + "\t" + formData.name + "\n\n" + formData.body };
+
+      this.msx.sendMail(mailReq).subscribe((response) => 
+      {
+        console.log(response);
+        
+        console.log("Message sent successfully");
+        this.toastr.success("Message sent successfully");
+      },
+
+      (error) =>
+      {
+        console.error(error + "Error sending message");
+        this.toastr.error("Error sending message");
+      });
+    }
+    else
+    {
+      this.toastr.warning("Please fill all the fields with valid details");
+    }
+  }
+
+  public calculateAge(): number
+  {
+    const today = new Date();
+    const dob = new Date("1998-12-14");
+
+    let age = today.getFullYear()-dob.getFullYear();
+    const m = today.getMonth()-dob.getMonth();
+
+    if (m < 0 || (m === 0 && today.getDate() < dob.getDate())) 
+    {
+        age--;
+    }
+    return age;
+  }
 
 
-public contactMe(): void
-{
-  console.log(this.contact_form.value);
-}
-
-
-
-
-
-
-
-
-
-
-
-
-  //////////////////////////////////////////////UI Toolkit/////////////////////////////////////
+  ////////////////////////////////////////////// UI Toolkit /////////////////////////////////////
 
   private selector(el: string , all = false)
   {
@@ -90,7 +121,7 @@ public contactMe(): void
   {
     const slc = <HTMLElement>this.selector(hasx);
     const target = <HTMLElement>event.target;
-    console.log(target);
+    //console.log(target);
     
     //const navLink =<HTMLElement> this.selector("#navbar .nav-link");
 

@@ -10,7 +10,7 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "^14.0.1",
+    "@angular/animations": "^14.0.2",
     "@angular/common": "^14.0.1",
     "@angular/compiler": "^14.0.1",
     "@angular/core": "^14.0.1",
@@ -21,6 +21,7 @@
     "@popperjs/core": "^2.11.5",
     "bootstrap": "^5.2.0-beta1",
     "firebase-tools": "^11.1.0",
+    "ngx-toastr": "^15.0.0",
     "rxjs": "~7.4.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
