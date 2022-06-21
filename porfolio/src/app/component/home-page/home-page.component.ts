@@ -34,6 +34,8 @@ export class HomePageComponent implements OnInit
       Validators.maxLength(200),
     ])
   });
+
+  btnStatus:boolean = false;
     
   constructor(private msx: HomeService,private toastr: ToastrService) { }
 
@@ -41,25 +43,27 @@ export class HomePageComponent implements OnInit
   
   public contactMe(): void
   {
-
     if(this.contact_form.valid)
     {
       console.log(this.contact_form.value);
       const formData = this.contact_form.value;
       const mailReq = { mailid:"abrewabraham@gmail.com",subject:formData.subject,body:formData.email + "\t" + formData.name + "\n\n" + formData.body };
 
+      this.btnStatus=true;
       this.msx.sendMail(mailReq).subscribe((response) => 
       {
         console.log(response);
         
         console.log("Message sent successfully");
         this.toastr.success("Message sent successfully");
+        this.btnStatus=false;
       },
 
       (error) =>
       {
         console.error(error + "Error sending message");
         this.toastr.error("Error sending message");
+        this.btnStatus=false;
       });
     }
     else
