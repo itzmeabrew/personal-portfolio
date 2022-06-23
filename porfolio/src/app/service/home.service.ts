@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class HomeService 
 {
-  API_ENDPOINT = "http://34.83.133.79:8080/";
+  API_ENDPOINT = "https://api.abrewabraham.dev/";
   //API_ENDPOINT = "http://localhost:8080/";
 
   constructor(private http: HttpClient) { }

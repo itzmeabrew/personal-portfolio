@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Map;
 
 @RestController
-@CrossOrigin(origins = "http://abrewabraham.dev")
+@CrossOrigin(origins = "https://abrewabraham.dev")
 @RequestMapping("/api")
 public class MailRequestController
 {
