@@ -57,6 +57,7 @@ export class HomePageComponent implements OnInit
         console.log("Message sent successfully");
         this.toastr.success("Message sent successfully");
         this.btnStatus=false;
+        this.contact_form.reset();
       },
 
       (error) =>
