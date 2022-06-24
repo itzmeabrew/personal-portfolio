@@ -13,7 +13,7 @@
 {
     .btnResponsive
     {
-        display: none;
+        display: inline-block;
     }
 }
 
