@@ -17,8 +17,22 @@
     }
 }
 
+@media (max-width: 378px) 
+{
+    .btnResponsive
+    {
+        display: none;
+    }
+}
+
+
 .text-justify
 {
     text-align: justify;
     text-justify: inter-word;
+}
+
+.profile
+{
+    border-radius: 18px;
 }
