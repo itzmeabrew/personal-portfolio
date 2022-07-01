@@ -118,23 +118,30 @@
       <div class="col-lg-6">
 
         <div class="progress">
-          <span class="skill">HTML5 <i class="val">95%</i></span>
+          <span class="skill">HTML 5 <i class="val">95%</i></span>
           <div class="progress-bar-wrap">
             <div class="progress-bar" style="width:95%" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
           </div>
         </div>
 
         <div class="progress">
-          <span class="skill">CSS3 / Bootstrap & Tailwind<i class="val">90%</i></span>
+          <span class="skill">CSS 3 / Bootstrap, MDB & Tailwind<i class="val">90%</i></span>
           <div class="progress-bar-wrap">
             <div class="progress-bar" style="width:90%" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
           </div>
         </div>
 
         <div class="progress">
-          <span class="skill">Angular <i class="val">85%</i></span>
+          <span class="skill">Angular / Java Script <i class="val">85%</i></span>
           <div class="progress-bar-wrap">
             <div class="progress-bar" style="width:85%" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+        </div>
+
+        <div class="progress">
+          <span class="skill">MySQL / RDS <i class="val">80%</i></span>
+          <div class="progress-bar-wrap">
+            <div class="progress-bar" style="width:80%" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
           </div>
         </div>
 
@@ -143,21 +150,28 @@
       <div class="col-lg-6">
 
         <div class="progress">
-          <span class="skill">Java / Spring <i class="val">60%</i></span>
+          <span class="skill">Java / Spring Boot<i class="val">75%</i></span>
           <div class="progress-bar-wrap">
             <div class="progress-bar" role="progressbar" style="width:60%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
           </div>
         </div>
 
         <div class="progress">
-          <span class="skill">Python <i class="val">80%</i></span>
+          <span class="skill">Python 3<i class="val">70%</i></span>
           <div class="progress-bar-wrap">
-            <div class="progress-bar" role="progressbar" style="width:65%" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
+            <div class="progress-bar" role="progressbar" style="width:80%" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
           </div>
         </div>
 
         <div class="progress">
-          <span class="skill">Adobe Creative Suite <i class="val">70%</i></span>
+          <span class="skill">AWS / Azure <i class="val">40%</i></span>
+          <div class="progress-bar-wrap">
+            <div class="progress-bar" role="progressbar" style="width:40%" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+        </div>
+
+        <div class="progress">
+          <span class="skill">Adobe Creative Cloud <i class="val">70%</i></span>
           <div class="progress-bar-wrap">
             <div class="progress-bar" role="progressbar" style="width:70%" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
           </div>
@@ -338,7 +352,7 @@
       <h2>Resume</h2>
       <p>
         Check My Resume
-        <span style="font-size: 22px;" class="float-end">
+        <span *ngIf="!btnMobile" style="font-size: 22px;" class="float-end">
           <a style="font-family: sans-serif" target="_blank" class="btn btn-outline-success btnResponsive" href="https://drive.google.com/file/d/1mnj4elRgw71VbhUx7praMmZeGXt1slLk/view?usp=sharing">
             <i class="fa-solid fa-cloud-arrow-down"></i>&nbsp;Résumé PDF
           </a>
@@ -401,6 +415,12 @@
           </ul>
         </div>
       </div>
+    </div>
+
+    <div *ngIf="btnMobile" style="font-size: 22px;" class="text-center">
+      <a style="font-family: sans-serif" target="_blank" class="btn btn-outline-success btnResponsive" href="https://drive.google.com/file/d/1mnj4elRgw71VbhUx7praMmZeGXt1slLk/view?usp=sharing">
+        <i class="fa-solid fa-cloud-arrow-down"></i>&nbsp;Résumé PDF
+      </a>
     </div>
 
   </div>
@@ -533,7 +553,16 @@
       </div>
       <br>
       <div class="text-center">
-        <button [disabled]="btnStatus" class="btn btn-secondary" type="submit">Send Message&nbsp;&nbsp;<i class="material-icons" style="vertical-align: -6px;">send</i></button>
+        <button [disabled]="btnStatus" class="btn btn-secondary" type="submit">
+          <div [hidden]="btnStatus">
+            Send Message&nbsp;&nbsp;<i class="material-icons" style="vertical-align: -6px;">send</i>
+          </div>
+
+          <div [hidden]="!btnStatus" class="spinner-border spinner-border-sm text-light" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+          
+        </button>
       </div>
     </form>
 

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { HomeService } from '../../service/home.service';
@@ -13,10 +13,10 @@ export class HomePageComponent implements OnInit
   contact_form: FormGroup = new FormGroup(
   {
     name: new FormControl(null,
-    [
-      Validators.required,
-      Validators.maxLength(45)
-    ]),
+      [
+        Validators.required,
+        Validators.maxLength(45)
+      ]),
     email: new FormControl(null,
       [
         Validators.required,
@@ -29,17 +29,21 @@ export class HomePageComponent implements OnInit
         Validators.maxLength(45),
       ]),
     body: new FormControl(null,
-    [
+      [
       Validators.required,
       Validators.maxLength(200),
-    ])
+      ])
   });
 
   btnStatus:boolean = false;
+  btnMobile:boolean = null;
     
   constructor(private msx: HomeService,private toastr: ToastrService) { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void 
+  {
+    this.onResize();
+  }
   
   public contactMe(): void
   {
@@ -47,7 +51,7 @@ export class HomePageComponent implements OnInit
     {
       console.log(this.contact_form.value);
       const formData = this.contact_form.value;
-      const mailReq = { mailid:"abrewabraham@gmail.com",subject:formData.subject,body:formData.email + "\t" + formData.name + "\n\n" + formData.body };
+      const mailReq = { mailid:"abrewabraham@gmail.com", subject:formData.subject,body:formData.email + "\t" + formData.name + "\n\n" + formData.body };
 
       this.btnStatus=true;
       this.msx.sendMail(mailReq).subscribe((response) => 
@@ -88,10 +92,37 @@ export class HomePageComponent implements OnInit
     return age;
   }
 
+  @HostListener('window:resize', ['$event'])
+  private onResize(event?) :void
+  {
+    const vWidth = window.innerWidth;
+    const vHeight = window.innerHeight;
+    //console.log(vWidth, vHeight);
+    if(vWidth <= 390)
+    {
+      this.btnMobile = true;
+      console.log("Mobile");
+    }
+    else if(vWidth >= 416 && vWidth <= 767)
+    {
+      this.btnMobile = true;
+      console.log("Mobile 2");
+    }
+    else
+    {
+      this.btnMobile = false;
+      console.log("Desktop");
+      
+    }
+   //  event.target.innerWidth;
+   //console.log(vWidth, vHeight);
+   
+  }
+
 
   ////////////////////////////////////////////// UI Toolkit /////////////////////////////////////
 
-  private selector(el: string , all = false)
+  private selector(el: string , all = false): any
   {
     el = el.trim();
     if (all) 
@@ -104,12 +135,9 @@ export class HomePageComponent implements OnInit
     }
   }
 
-  private scrollTo(el)
+  private scrollTo(el): void
   {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    })
+    window.scrollTo({top: 0,behavior: 'smooth'});
   }
 
   public navBarTogle(id: string): void
@@ -117,7 +145,7 @@ export class HomePageComponent implements OnInit
     const elem = document.getElementById(id);
     const closex = document.querySelector(".mobile-nav-toggle");
 
-    elem.classList.toggle('navbar-mobile')
+    elem.classList.toggle('navbar-mobile');
     closex.classList.toggle('fa-ellipsis');
     closex.classList.toggle('fa-xmark');
   }
