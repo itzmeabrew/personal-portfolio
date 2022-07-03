@@ -98,25 +98,23 @@ export class HomePageComponent implements OnInit
     const vWidth = window.innerWidth;
     const vHeight = window.innerHeight;
     //console.log(vWidth, vHeight);
-    if(vWidth <= 390)
+    if(vWidth < 768)
     {
       this.btnMobile = true;
-      console.log("Mobile");
+      //console.log("Mobile");
     }
-    else if(vWidth >= 416 && vWidth <= 767)
+    /* else if(vWidth >= 416 && vWidth <= 767)
     {
       this.btnMobile = true;
       console.log("Mobile 2");
-    }
+    } */
     else
     {
       this.btnMobile = false;
-      console.log("Desktop");
-      
+     //console.log("Desktop");
     }
    //  event.target.innerWidth;
    //console.log(vWidth, vHeight);
-   
   }
 
 

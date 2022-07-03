@@ -25,7 +25,7 @@ export class AppComponent
     {
       image: "#040404 url('../src/assets/images/bg3.jpg') center no-repeat !important"
     },
-    fpsLimit: 30,
+    fpsLimit: 50,
     interactivity: 
     {
       events: 
@@ -50,8 +50,8 @@ export class AppComponent
         },
         repulse: 
         {
-          distance: 200,
-          duration: 0.4
+          distance: 100,
+          duration: 0.8
         }
       }
     },
@@ -83,7 +83,7 @@ export class AppComponent
         },
         bounce: false,
         random: false,
-        speed: 3,
+        speed: 2,
         straight: false
       },
       number: 
@@ -93,7 +93,7 @@ export class AppComponent
           enable: true,
           area: 800
         },
-        value: 80
+        value: 50
       },
       opacity: 
       {
@@ -117,6 +117,8 @@ export class AppComponent
   { 
     this.setUpAnalytics();
     this.cursorAnimation();
+    console.log("This website is build using Angular and Java/Spring for backend");
+    
   }
 
   public setUpAnalytics(): void
@@ -145,12 +147,12 @@ export class AppComponent
 
   public particlesLoaded(container: Container): void 
   {
-    console.log(container);
+    //console.log(container);
   }
 
   async particlesInit(engine: Engine): Promise<void> 
   {
-    console.log(engine);
+    //console.log(engine);
     await loadFull(engine);
   }
 
