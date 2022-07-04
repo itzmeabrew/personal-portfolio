@@ -1,1 +1,0 @@
-{"ast":null,"code":"export const environment = {\n  production: true,\n  API_ENDPOINT: \"https://api.abrewabraham.dev/\"\n};","map":null,"metadata":{},"sourceType":"module"}
