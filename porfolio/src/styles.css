@@ -478,7 +478,6 @@ section .container {
 }
 
 .skills .progress-bar {
-  width: 91%;
   height: 10px !important;
   transition: 0.9s !important;
   background-color: #18d26e !important;

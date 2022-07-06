@@ -58,16 +58,11 @@ canvas
   animation: cursorAnim4 0.2s forwards;
 }
 
-/* .sx:hover
+ /* .sx:hover
 {
   color: red !important;
   transform: scale(3);
-} */
-
-a :hover ~ .cursor
-{
-  border: 1px solid rgba(243, 0, 0, 0.774);
-}
+}  */
 
 @keyframes cursorAnim 
 {

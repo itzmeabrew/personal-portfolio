@@ -50,7 +50,7 @@ export class AppComponent
         },
         repulse: 
         {
-          distance: 100,
+          distance: 80,
           duration: 0.8
         }
       }
@@ -83,7 +83,7 @@ export class AppComponent
         },
         bounce: false,
         random: false,
-        speed: 2,
+        speed: 0.5,
         straight: false
       },
       number: 
@@ -117,8 +117,7 @@ export class AppComponent
   { 
     this.setUpAnalytics();
     this.cursorAnimation();
-    console.log("This website is build using Angular and Java/Spring for backend");
-    
+    console.log("This website is build using Angular and Java/Spring for backend");  
   }
 
   public setUpAnalytics(): void

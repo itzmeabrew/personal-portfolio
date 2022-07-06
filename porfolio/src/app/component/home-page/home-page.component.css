@@ -37,9 +37,9 @@
     border-radius: 18px;
 }
 
-.buttonSend:hover .buttonIcon
+.buttonSend:active .buttonIcon
 {
-    animation: logoAnim 0.5s forwards;
+    animation: logoAnim 0.2s forwards;
 }
 
 
@@ -47,11 +47,11 @@
 {
   from 
   {
-    transform: translateX(0);
+    transform: translateX(0px);
   }
   to
   {
-    transform: translateX(10);
+    transform: translateX(10px);
     opacity: 0;
   }
 }

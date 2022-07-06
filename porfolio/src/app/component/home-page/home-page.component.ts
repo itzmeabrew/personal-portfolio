@@ -1,5 +1,6 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { AfterViewInit, Component, HostListener, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { HomeService } from '../../service/home.service';
 
@@ -8,7 +9,7 @@ import { HomeService } from '../../service/home.service';
   templateUrl: './home-page.component.html',
   styleUrls: ['./home-page.component.css']
 })
-export class HomePageComponent implements OnInit
+export class HomePageComponent implements OnInit,AfterViewInit
 {
   contact_form: FormGroup = new FormGroup(
   {
@@ -35,16 +36,27 @@ export class HomePageComponent implements OnInit
       ])
   });
 
-  btnStatus:boolean = false;
-  btnMobile:boolean = null;
+  btnStatus: boolean = false;
+  btnMobile: boolean = null;
+
+  //skillSection: HTMLElement = null;
+  prgBar: Array<HTMLElement> = new Array();
     
-  constructor(private msx: HomeService,private toastr: ToastrService) { }
+  constructor(private msx: HomeService, private toastr: ToastrService) { }
 
   ngOnInit(): void 
   {
     this.onResize();
   }
-  
+
+  ngAfterViewInit(): void
+  {
+    //this.skillSection = this.selector("#skills");
+    this.prgBar = <Array<HTMLElement>>this.selector(".progress-bar", true)
+    this.animateScroll();
+    ///console.log(this.prgBar);
+  }
+
   public contactMe(): void
   {
     if(this.contact_form.valid)
@@ -92,6 +104,27 @@ export class HomePageComponent implements OnInit
     return age;
   }
 
+  private animateScroll(): void
+  {
+    this.prgBar.forEach((prg) =>
+    {
+      const pValue = prg.dataset['progress'];
+      //prg.setAttribute("style", "transition: width 0.5s ease-in-out;width:5%");
+      //prg.style.opacity = "1";
+      prg.style.width = pValue + "%";
+      //console.log(pValue);
+    });
+  }
+
+  /*private hideScroll(): void
+  {
+    this.prgBar.forEach((prg) =>
+    {
+      //prg.style.opacity = "0";
+      //console.log(pValue);
+    });
+  } */
+
   @HostListener('window:resize', ['$event'])
   private onResize(event?) :void
   {
@@ -116,6 +149,24 @@ export class HomePageComponent implements OnInit
    //  event.target.innerWidth;
    //console.log(vWidth, vHeight);
   }
+
+  /* @HostListener('window:scroll', ['$event'])
+  private onScroll(event) : void
+  {
+    const sectionPos = this.skillSection.getBoundingClientRect().top;
+    const screenPos = window.innerHeight;
+
+    if(sectionPos < screenPos)
+    {
+      console.log("show progress");
+      this.animateScroll();
+    }
+    else
+    {
+      console.log("hide progress");
+      this.hideScroll();
+    }
+  } */
 
 
   ////////////////////////////////////////////// UI Toolkit /////////////////////////////////////
