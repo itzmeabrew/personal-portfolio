@@ -1,6 +1,5 @@
-import { AfterViewInit, Component, HostListener, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { HomeService } from '../../service/home.service';
 
@@ -9,7 +8,7 @@ import { HomeService } from '../../service/home.service';
   templateUrl: './home-page.component.html',
   styleUrls: ['./home-page.component.css']
 })
-export class HomePageComponent implements OnInit,AfterViewInit
+export class HomePageComponent implements OnInit
 {
   contact_form: FormGroup = new FormGroup(
   {
@@ -36,27 +35,16 @@ export class HomePageComponent implements OnInit,AfterViewInit
       ])
   });
 
-  btnStatus: boolean = false;
-  btnMobile: boolean = null;
-
-  //skillSection: HTMLElement = null;
-  prgBar: Array<HTMLElement> = new Array();
+  btnStatus:boolean = false;
+  btnMobile:boolean = null;
     
-  constructor(private msx: HomeService, private toastr: ToastrService) { }
+  constructor(private msx: HomeService,private toastr: ToastrService) { }
 
   ngOnInit(): void 
   {
     this.onResize();
   }
-
-  ngAfterViewInit(): void
-  {
-    //this.skillSection = this.selector("#skills");
-    this.prgBar = <Array<HTMLElement>>this.selector(".progress-bar", true)
-    this.animateScroll();
-    ///console.log(this.prgBar);
-  }
-
+  
   public contactMe(): void
   {
     if(this.contact_form.valid)
@@ -66,21 +54,21 @@ export class HomePageComponent implements OnInit,AfterViewInit
       const mailReq = { mailid:"abrewabraham@gmail.com", subject:formData.subject,body:formData.email + "\t" + formData.name + "\n\n" + formData.body };
 
       this.btnStatus=true;
-      this.msx.sendMail(mailReq).subscribe((response) => 
+      this.msx.sendMail(mailReq).subscribe(
       {
-        console.log(response);
-        
-        console.log("Message sent successfully");
-        this.toastr.success("Message sent successfully");
-        this.btnStatus=false;
-        this.contact_form.reset();
-      },
-
-      (error) =>
-      {
-        console.error(error + "Error sending message");
-        this.toastr.error("Error sending message");
-        this.btnStatus=false;
+        next: (response) => 
+        {
+          console.log(response);
+          this.toastr.success("Mail sent successfully");
+          this.btnStatus = false;
+          this.contact_form.reset();
+        },
+        error: (error) =>
+        {
+          console.log(error);
+          this.toastr.error("Mail not sent");
+          this.btnStatus = false;
+        }
       });
     }
     else
@@ -103,27 +91,6 @@ export class HomePageComponent implements OnInit,AfterViewInit
     }
     return age;
   }
-
-  private animateScroll(): void
-  {
-    this.prgBar.forEach((prg) =>
-    {
-      const pValue = prg.dataset['progress'];
-      //prg.setAttribute("style", "transition: width 0.5s ease-in-out;width:5%");
-      //prg.style.opacity = "1";
-      prg.style.width = pValue + "%";
-      //console.log(pValue);
-    });
-  }
-
-  /*private hideScroll(): void
-  {
-    this.prgBar.forEach((prg) =>
-    {
-      //prg.style.opacity = "0";
-      //console.log(pValue);
-    });
-  } */
 
   @HostListener('window:resize', ['$event'])
   private onResize(event?) :void
@@ -149,24 +116,6 @@ export class HomePageComponent implements OnInit,AfterViewInit
    //  event.target.innerWidth;
    //console.log(vWidth, vHeight);
   }
-
-  /* @HostListener('window:scroll', ['$event'])
-  private onScroll(event) : void
-  {
-    const sectionPos = this.skillSection.getBoundingClientRect().top;
-    const screenPos = window.innerHeight;
-
-    if(sectionPos < screenPos)
-    {
-      console.log("show progress");
-      this.animateScroll();
-    }
-    else
-    {
-      console.log("hide progress");
-      this.hideScroll();
-    }
-  } */
 
 
   ////////////////////////////////////////////// UI Toolkit /////////////////////////////////////

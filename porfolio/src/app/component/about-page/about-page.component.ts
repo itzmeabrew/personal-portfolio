@@ -1,31 +1,32 @@
-import { Component, HostListener } from '@angular/core';
-import { NavigationEnd, Router } from '@angular/router';
-import { filter } from 'rxjs';
-import { loadFull } from 'tsparticles';
-import { ClickMode, HoverMode, MoveDirection, OutMode, Container, Engine } from 'tsparticles-engine';
-
-declare let gtag: Function;
+import { Component, HostListener, OnInit, ViewEncapsulation } from '@angular/core';
+import { of } from 'rxjs';
+import { loadFull } from "tsparticles";
+import { ClickMode, Container, Engine, HoverMode, MoveDirection, OutMode } from 'tsparticles-engine';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css','./cursor-style.css']
+  selector: 'app-about-page',
+  templateUrl: './about-page.component.html',
+  styleUrls: ['./about-page.component.css']
 })
-export class AppComponent 
+export class AboutPageComponent implements OnInit 
 {
-  title = 'porfolio';
+  constructor() { }
 
   innerCursor:HTMLElement = null;
-  id = "tsparticles";
-  showVar: boolean = false;
 
+  id = "tsparticles";
+
+  /* Starting from 1.19.0 you can use a remote url (AJAX request) to a JSON with the configuration */
+  //particlesUrl = "http://foo.bar/particles.json";
+
+  /* or the classic JavaScript object */
   particlesOptions = 
   {
     background: 
     {
       image: "#040404 url('../src/assets/images/bg3.jpg') center no-repeat !important"
     },
-    fpsLimit: 50,
+    fpsLimit: 30,
     interactivity: 
     {
       events: 
@@ -50,8 +51,8 @@ export class AppComponent
         },
         repulse: 
         {
-          distance: 100,
-          duration: 0.8
+          distance: 200,
+          duration: 0.4
         }
       }
     },
@@ -83,7 +84,7 @@ export class AppComponent
         },
         bounce: false,
         random: false,
-        speed: 2,
+        speed: 3,
         straight: false
       },
       number: 
@@ -93,7 +94,7 @@ export class AppComponent
           enable: true,
           area: 800
         },
-        value: 50
+        value: 80
       },
       opacity: 
       {
@@ -111,26 +112,16 @@ export class AppComponent
     detectRetina: true
   };
 
-  constructor(private router: Router) {}
-
-  ngOnInit(): void
-  { 
-    this.setUpAnalytics();
-    this.cursorAnimation();
-    console.log("This website is build using Angular and Java/Spring for backend");
-    
-  }
-
-  public setUpAnalytics(): void
+  public particlesLoaded(container: Container): void 
   {
-    this.router.events.pipe(filter(event => event instanceof NavigationEnd))
-    .subscribe((event: NavigationEnd) => 
-    {
-      gtag('config', 'G-BSC8004RT3',{page_path: event.urlAfterRedirects});
-    });
+    console.log(container);
   }
 
-  ///////////////////////////////////////////////////////////////////
+  async particlesInit(engine: Engine): Promise<void> 
+  {
+    console.log(engine);
+    await loadFull(engine);
+  }
 
   private selector(el: string , all = false): any
   {
@@ -145,42 +136,23 @@ export class AppComponent
     }
   }
 
-  public particlesLoaded(container: Container): void 
-  {
-    //console.log(container);
-  }
-
-  async particlesInit(engine: Engine): Promise<void> 
-  {
-    //console.log(engine);
-    await loadFull(engine);
-  }
-
-  private cursorAnimation(): void
-  {
-    this.innerCursor = this.selector(".cursor");
-    this.showVar = false;
+  ngOnInit(): void
+  { 
+    this.cursorAnimation();
   }
 
   @HostListener('document:mousemove', ['$event']) 
   private onMouseMove(e) :void 
   {
-    this.showVar = true;
     const clientX = e.pageX - 6;
     const clientY = e.pageY - 5;
 
     this.innerCursor.setAttribute("style" , "top:" + clientY + "px; left:" + clientX + "px;");
-    
-    if(this.innerCursor.classList.contains("disappear"))
-    {
-      this.innerCursor.classList.remove("disappear");
-    }
   }
 
   @HostListener('document:click', ['$event']) 
   private onMouseClick(e) :void 
   {
-    this.showVar = true;
     this.innerCursor.classList.add("expand");
 
     setTimeout(() => 
@@ -189,12 +161,10 @@ export class AppComponent
     },500);
   }
 
-  @HostListener('document:scroll', ['$event'])
-  private onMouseScroll(e) :void
+  private cursorAnimation(): void
   {
-    //console.log("hi");
-    
-    this.innerCursor.classList.add("disappear");
+    this.innerCursor = this.selector(".cursor");
   }
-
 }
+
+
