@@ -13,6 +13,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NotFoundComponent } from './component/not-found/not-found.component';
 import { NgParticlesModule } from 'ng-particles';
 import { IntroLoaderComponent } from './component/intro-loader/intro-loader.component';
+import { GoResumeComponent } from './component/go-resume/go-resume.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { IntroLoaderComponent } from './component/intro-loader/intro-loader.comp
     AboutPageComponent,
     FooterComponent,
     NotFoundComponent,
-    IntroLoaderComponent
+    IntroLoaderComponent,
+    GoResumeComponent
   ],
   imports: [
     BrowserModule,

@@ -50,7 +50,7 @@ export class AppComponent
         },
         repulse: 
         {
-          distance: 100,
+          distance: 80,
           duration: 0.8
         }
       }
@@ -83,7 +83,7 @@ export class AppComponent
         },
         bounce: false,
         random: false,
-        speed: 2,
+        speed: 1,
         straight: false
       },
       number: 
