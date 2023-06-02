@@ -46,3 +46,8 @@ testem.log
 Thumbs.db
 porfolio/dist
 porfolio/.angular
+ui/personal/.editorconfig
+ui/personal/.gitignore
+ui/personal/.vscode/extensions.json
+ui/personal/.vscode/launch.json
+ui/personal/.vscode/tasks.json
