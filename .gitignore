@@ -51,3 +51,5 @@ ui/personal/.gitignore
 ui/personal/.vscode/extensions.json
 ui/personal/.vscode/launch.json
 ui/personal/.vscode/tasks.json
+porfolio/node_modules
+porfolio/.firebase
