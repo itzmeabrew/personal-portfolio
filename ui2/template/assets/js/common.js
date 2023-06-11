@@ -8,6 +8,9 @@
 
 ( function( $ ) {
 	'use strict';
+	$(document).ready(function() {
+		console.log("Created using Angular and Java");
+	});
 
 /**
 	Preloader
