@@ -53,3 +53,6 @@ ui/personal/.vscode/launch.json
 ui/personal/.vscode/tasks.json
 porfolio/node_modules
 porfolio/.firebase
+ui/personal/node_modules
+ui/personal/.vscode
+ui/personal/.angular
