@@ -1,1 +1,43 @@
 /* You can add global styles to this file, and also import other style files */
+:root
+{
+  --bg: #f0f0f3;
+  --clr: #85a4c4;
+  --btn: #7889b3;
+  --txt: #85a4c4;
+}
+
+@font-face {
+  font-family: 'Satoshi';
+  src: url('../src/assets/font/Satoshi-Variable.woff2') format('woff2'),
+       url('../src/assets/font/Satoshi-Variable.woff') format('woff'),
+       url('../src/assets/font/Satoshi-Variable.ttf') format('truetype');
+       font-weight: 300 900;
+       font-display: swap;
+       font-style: normal;
+}
+
+
+body
+{
+  color: var(--clr) !important;
+  background-color: var(--bg) !important;
+  font-family: Satoshi, Arial !important;
+  font-size: 14px !important;
+  line-height: 20px !important;
+}
+
+
+.cstm-card
+{
+  box-shadow: 6px 6px 10px rgba(174, 174, 192, .4), -6px -6px 10px #fff;
+  border: none !important;
+  border-radius: 20px !important;
+  background-color: var(--bg) !important;
+  padding: 20px;
+}
+
+.txt-gradient
+{
+  color: var(--btn) !important;
+}
