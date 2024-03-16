@@ -35,6 +35,12 @@ body
   border-radius: 20px !important;
   background-color: var(--bg) !important;
   padding: 20px;
+  transition: box-shadow 0.3s ease-in-out; /* Add transition for box-shadow */
+}
+
+.cstm-card:hover
+{
+  box-shadow: 11px 11px 18px rgba(174, 174, 192, .4), -10px -10px 16px #fff;
 }
 
 .txt-gradient
